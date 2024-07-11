@@ -1,0 +1,50 @@
+<!--login.component.html-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <h1>Bulletin Board</h1>
+      <h2>Login</h2>
+    </header>
+    <div class="container">
+      <form (submit)="onLogin(loginform)" #loginform="ngForm">
+        <h2>Login</h2>
+        <input
+          type="text"
+          ngModel
+          name="enteredusername"
+          required
+          #enteredusername="ngModel"
+        />
+        <div
+        *ngIf="enteredusername.invalid && (enteredusername.dirty || enteredusername.touched)"
+          class="text-danger"
+        >
+          Username is required.
+        </div>
+        <br />
+        <input
+          type="password"
+          ngModel
+          name="enteredpassword"
+          required
+          #enteredpassword="ngModel"
+        />
+        <div
+          *ngIf="enteredpassword.invalid && (enteredpassword.dirty || enteredpassword.touched)"
+          class="text-danger"
+        >
+          Confirm password is required.
+        </div>
+        <br />
+        <button type="submit">Log In</button>
+        <div *ngIf="hasError" class="text-danger">{{ errorMessage }}</div>
+      </form>
+    </div>
+  </body>
+</html>
